@@ -7,12 +7,6 @@ jobs:
   trivy-scan:
     if: ${{ github.actor != 'dependabot[bot]' && github.event.pull_request == null}}
     runs-on: ubuntu-latest
-    env: 
-      SCAN_PATH: "." # Set the relative path in the repo to scan
-      POLICY: "Default IaC policy" # Set the desired Wiz CLI policy to use
-      WIZ_CLIENT_ID: ${{ secrets.WIZ_CLIENT_ID }}
-      WIZ_CLIENT_SECRET: ${{ secrets.WIZ_CLIENT_SECRET }}
-      BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
