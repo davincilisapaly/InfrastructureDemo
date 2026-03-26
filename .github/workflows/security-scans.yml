@@ -49,9 +49,9 @@ jobs:
         with:
           advanced-security: false
           # optional: narrow what to scan
-          inputs: |
-           infrastructure
-           .github/workflows
+        #   inputs: |
+        #    infrastructure
+        #    .github/workflows
           # key bit: don't fail when there are no inputs
           #fail-on-no-inputs: false
 
