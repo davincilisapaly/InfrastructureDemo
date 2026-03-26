@@ -43,4 +43,8 @@ jobs:
         uses: zizmorcore/zizmor-action@71321a20a9ded102f6e9ce5718a2fcec2c4f70d8 # v0.5.2
         with:
           advanced-security: false
+          # optional: narrow what to scan
+          inputs: infrastructure
+          # key bit: don't fail when there are no inputs
+          #fail-on-no-inputs: false
 
