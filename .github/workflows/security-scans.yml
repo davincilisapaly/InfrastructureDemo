@@ -12,15 +12,15 @@ jobs:
         uses: actions/checkout@v4
     #   - name: Build an image from Dockerfile
     #     run: docker build -t docker.io/my-organization/my-app:${{ github.sha }} .
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.35.0
+      - name: Trivy filesystem scan
+        uses: aquasecurity/trivy-action@v0.35.0
         with:
-          image-ref: 'docker.io/my-organization/my-app:${{ github.sha }}'
-          format: 'table'
-          exit-code: '1'
-          ignore-unfixed: true
-          vuln-type: 'os,library'
+          scan-type: 'fs'
+          scan-ref: '.'          # path in the repo to scan
+          format: 'table'        # or 'sarif' for code scanning
+          scanners: 'vuln,secret,misconfig'
           severity: 'CRITICAL,HIGH'
+          exit-code: '1'         # fail on findings
 
   gitleaks-scan:
     name: gitleaks
